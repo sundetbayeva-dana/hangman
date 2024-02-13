@@ -1,0 +1,183 @@
+.cont {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .cont {
+    flex-direction: column;
+  }
+
+}
+
+.gallows {
+  display: flex;
+  position: relative;
+}
+
+.gallows .head {
+  top: 150px;
+  right: 0;
+}
+
+.gallows .body {
+  top: 250px;
+  right: 50px;
+}
+
+.gallows .hand-one {
+  top: 270px;
+  right: 50px;
+}
+
+.gallows .hand-two {
+  top: 270px;
+  right: -14px;
+}
+
+.gallows .leg-one {
+  top: 375px;
+  right: 50px;
+}
+
+.gallows .leg-two {
+  top: 375px;
+  right: -14px;
+}
+
+@media (max-width: 768px) {
+  .gallows {
+    justify-content: center;
+    width: 122px;
+    margin: 0 auto;
+  }
+
+  .gallows img {
+    height: 200px;
+  }
+
+  .gallows .head {
+    top: 50px;
+    right: 0;
+    height: 35px
+  }
+
+  .gallows .body {
+    top: 85px;
+    right: 17px;
+    height: 45px
+  }
+
+  .gallows .hand-one {
+    top: 90px;
+    right: 17px;
+    height: 25px
+  }
+
+  .gallows .hand-two {
+    top: 90px;
+    right: -3px;
+    height: 25px
+  }
+
+  .gallows .leg-one {
+    top: 128px;
+    right: 17px;
+    height: 25px
+  }
+
+  .gallows .leg-two {
+    top: 128px;
+    right: -3px;
+    height: 25px
+  }
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 80%;
+}
+button {
+  margin: 10px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 355px);
+}
+
+.quiz p {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .quiz {
+    width: 100%
+  }
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  border: 1px solid tan;
+}
+
+.letter {
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+}
+
+.popup {
+  display: none;
+  width: 50%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: tan;
+  z-index: 5;
+}
+
+.popup_showed {
+  display: flex;
+  position: fixed;
+}
+
+.popup__content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    width: 65%
+  }
+}
+
+@media (max-width: 425px) {
+  .popup {
+    width: 80%
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay_showed {
+  display: flex;
+}
