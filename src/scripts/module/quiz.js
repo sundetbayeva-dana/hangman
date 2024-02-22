@@ -27,6 +27,7 @@ function updateWord(data, gallows) {
     currentData = data;
     usedLetters = '';
     gallowsElem = gallows;
+    isGameOver = false;
 }
 
 function keyboardListener(e) {

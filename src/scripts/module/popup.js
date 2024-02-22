@@ -1,6 +1,7 @@
 import {popup, overlay} from "./blockCreation"
 
 let popupContentElem, textElem, popupTextContElem, buttonElem;
+let isPopupShowed = false
 
 function openPopup(config) {
 
@@ -8,23 +9,32 @@ function openPopup(config) {
     popupTextContElem = popup.querySelector('.text__cont');
     buttonElem = popup.querySelector('.button');
 
-    popup.classList.add('popup_showed');
-    overlay.classList.add('overlay_showed');
+    if (!isPopupShowed) {
+        popup.classList.add('popup_showed');
+        overlay.classList.add('overlay_showed');
 
-    renderText(config.text);
-    changeButton(config.button);
+        renderText(config.text);
+        changeButton(config.button);
+    }
+
+    isPopupShowed = true
 }
 
 function closePopup() {
-    popup.classList.remove('popup_showed');
-    overlay.classList.remove('overlay_showed');
 
-    while (popupTextContElem.firstChild) {
-        popupTextContElem.removeChild(popupTextContElem.firstChild);
+    if (isPopupShowed) {
+        popup.classList.remove('popup_showed');
+        overlay.classList.remove('overlay_showed');
+
+        while (popupTextContElem.firstChild) {
+            popupTextContElem.removeChild(popupTextContElem.firstChild);
+        }
+
+        buttonElem.textContent = '';
+        buttonElem.className = 'button'
     }
 
-    buttonElem.textContent = '';
-    buttonElem.className = 'button'
+    isPopupShowed = false
 
 }
 
