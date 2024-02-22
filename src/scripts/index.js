@@ -1,6 +1,6 @@
 import {keyboardListener, updateWord, typingListener, getAnswerArray, isGameOver } from './module/quiz';
 import {closePopup} from "./module/popup";
-import {cont, keyboard, getGallows, renderStatic} from "./module/blockCreation"
+import {cont, keyboard, popup, popupBtn, getGallows, renderStatic} from "./module/blockCreation"
 import { renderQuiz, removeQuiz } from "./module/quizRender"
 import './../style/style.css'
 
@@ -20,21 +20,30 @@ getAnswerArray()
         document.addEventListener('keydown', (e) => typingListener(e))
     })
 
-document.querySelector('.button').addEventListener('click', (e) => {
+popupBtn.addEventListener('click', () => {
+    if (isGameOver) setNewGame()
     closePopup();
-    if (isGameOver) {
-        gallows.remove();
-        gallows = getGallows();
-        cont.prepend(gallows);
-        removeQuiz();
-
-        keyboard.querySelectorAll('button').forEach(key => key.disabled = false);
-
-        getAnswerArray()
-            .then((data) => {
-                console.log(`Правильный ответ: ${data.answer}`)
-                renderQuiz(data);
-                updateWord(data, gallows);
-            })
-    }
 })
+
+document.addEventListener('keydown', function (e) {
+    if (!(popup.classList.contains('popup_showed') && e.key === 'Enter')) return
+
+    if (popupBtn.classList.contains('button_more') && isGameOver) setNewGame()
+    closePopup()
+})
+
+function setNewGame() {
+    gallows.remove();
+    gallows = getGallows();
+    cont.prepend(gallows);
+    removeQuiz();
+
+    keyboard.querySelectorAll('button').forEach(key => key.disabled = false);
+
+    getAnswerArray()
+        .then((data) => {
+            console.log(`Правильный ответ: ${data.answer}`)
+            renderQuiz(data);
+            updateWord(data, gallows);
+        })
+}

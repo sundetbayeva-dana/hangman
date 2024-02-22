@@ -40,8 +40,7 @@ function keyboardListener(e) {
 }
 
 function typingListener(e) {
-
-    const serviceKeys = ['Meta', 'Tab', 'Alt']
+    const serviceKeys = ['Meta', 'Tab', 'Alt', 'Enter']
     if (serviceKeys.includes(e.key)) return
 
     if (!alphabet.includes(e.key)) {

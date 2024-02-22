@@ -5,6 +5,7 @@ import gallowsImg from './../../assets/images/gallows.png';
 const body = document.querySelector('body');
 const cont = getContElem();
 const quizCont = getQuizCont();
+const popupBtn = getPopupBtn();
 const popup = getPopup();
 const overlay = getOverlay();
 const keyboard = getKeyboard();
@@ -35,6 +36,13 @@ function getQuizCont() {
     return cont;
 }
 
+function getPopupBtn() {
+    const button = document.createElement('button');
+    button.classList.add('button');
+
+    return button;
+}
+
 function getPopup() {
     const popup = document.createElement('div');
     popup.classList.add('popup');
@@ -47,9 +55,7 @@ function getPopup() {
     textCont.classList.add('text__cont');
     popupContent.append(textCont);
 
-    const button = document.createElement('button');
-    button.classList.add('button');
-    popupContent.append(button);
+    popupContent.append(popupBtn)
 
     return popup;
 }
@@ -82,4 +88,4 @@ function renderStatic() {
     render(overlay, body)
 }
 
-export { cont, quizCont, keyboard, popup, overlay, getGallows, renderStatic }
+export { cont, quizCont, keyboard, popup, popupBtn, overlay, getGallows, renderStatic }
