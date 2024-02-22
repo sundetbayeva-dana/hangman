@@ -1,7 +1,7 @@
-import {manikinPosition, alphabet, questions} from "../utils/constants.js";
-import {openPopup} from "./popup.js ";
-import {keyboard, quizCont} from "./blockCreation.js";
-import {getRandomNumber} from "../utils/utils.js"
+import {manikinPosition, alphabet, questions} from "../utils/constants";
+import {openPopup} from "./popup";
+import {keyboard, quizCont} from "./blockCreation";
+import {getRandomNumber} from "../utils/utils"
 
 let answerLetters = [], incorrectNumber, currentData, usedLetters;
 let gallowsElem;

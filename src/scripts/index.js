@@ -1,7 +1,8 @@
-import {keyboardListener, updateWord, typingListener, getAnswerArray } from './module/quiz.js';
-import {closePopup} from "./module/popup.js";
-import {cont, keyboard, getGallows, renderStatic} from "./module/blockCreation.js"
-import { renderQuiz, removeQuiz } from "./module/quizRender.js"
+import {keyboardListener, updateWord, typingListener, getAnswerArray } from './module/quiz';
+import {closePopup} from "./module/popup";
+import {cont, keyboard, getGallows, renderStatic} from "./module/blockCreation"
+import { renderQuiz, removeQuiz } from "./module/quizRender"
+import './../style/style.css'
 
 let gallows = getGallows();
 

@@ -1,3 +1,10 @@
+import headImg from "./../../assets/images/head.png";
+import bodyImg from "./../../assets/images/body.png";
+import handOneImg from "./../../assets/images/hand-one.png";
+import handTwoImg from "./../../assets/images/hand-two.png";
+import legOneImg from "./../../assets/images/leg-one.png";
+import legTwoImg from "./../../assets/images/leg-two.png";
+
 let alphabet = '';
 for (let i = 1072; i <= 1103; i++) {
   alphabet += String.fromCodePoint(i);
@@ -58,27 +65,27 @@ const questions = [
 
 const manikinPosition = {
   1 : {
-    url: "./images/head.png",
+    url: headImg,
     className: "head"
   },
   2 : {
-    url: "./images/body.png",
+    url: bodyImg,
     className: "body"
   },
   3 : {
-    url: "./images/hand-one.png",
+    url: handOneImg,
     className: "hand-one"
   },
   4 : {
-    url: "./images/hand-two.png",
+    url: handTwoImg,
     className: "hand-two"
   },
   5 : {
-    url: "./images/leg-one.png",
+    url: legOneImg,
     className: "leg-one"
   },
   6 : {
-    url: "./images/leg-two.png",
+    url: legTwoImg,
     className: "leg-two"
   }
 }

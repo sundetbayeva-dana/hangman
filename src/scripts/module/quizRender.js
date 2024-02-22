@@ -1,4 +1,4 @@
-import {quizCont} from "./blockCreation.js";
+import {quizCont} from "./blockCreation";
 
 let wordTemplate;
 let hint;

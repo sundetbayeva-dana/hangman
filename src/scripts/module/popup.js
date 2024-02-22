@@ -1,4 +1,4 @@
-import {popup, overlay} from "./blockCreation.js"
+import {popup, overlay} from "./blockCreation"
 
 let popupContentElem, textElem, popupTextContElem, buttonElem;
 

@@ -1,5 +1,6 @@
-import {alphabet} from "../utils/constants.js";
-import {render} from "../utils/utils.js"
+import {alphabet} from "../utils/constants";
+import {render} from "../utils/utils"
+import gallowsImg from './../../assets/images/gallows.png';
 
 const body = document.querySelector('body');
 const cont = getContElem();
@@ -19,10 +20,10 @@ function getGallows() {
     const gallows = document.createElement('div');
     gallows.classList.add('gallows');
 
-    const gallowsImg = document.createElement('img');
-    gallowsImg.classList.add('gallows__img');
-    gallowsImg.src = './images/gallows.png';
-    gallows.prepend(gallowsImg);
+    const gallowsImgEl = document.createElement('img');
+    gallowsImgEl.classList.add('gallows__img');
+    gallowsImgEl.src = gallowsImg;
+    gallows.prepend(gallowsImgEl);
 
     return gallows;
 }
