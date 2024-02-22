@@ -1,4 +1,4 @@
-import {keyboardListener, updateWord, typingListener, getAnswerArray } from './module/quiz';
+import {keyboardListener, updateWord, typingListener, getAnswerArray, isGameOver } from './module/quiz';
 import {closePopup} from "./module/popup";
 import {cont, keyboard, getGallows, renderStatic} from "./module/blockCreation"
 import { renderQuiz, removeQuiz } from "./module/quizRender"
@@ -22,7 +22,7 @@ getAnswerArray()
 
 document.querySelector('.button').addEventListener('click', (e) => {
     closePopup();
-    if (e.target.classList.contains('button_more')) {
+    if (isGameOver) {
         gallows.remove();
         gallows = getGallows();
         cont.prepend(gallows);

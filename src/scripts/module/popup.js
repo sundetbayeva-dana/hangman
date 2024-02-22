@@ -24,6 +24,7 @@ function closePopup() {
     }
 
     buttonElem.textContent = '';
+    buttonElem.className = 'button'
 
 }
 

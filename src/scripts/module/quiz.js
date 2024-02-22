@@ -5,6 +5,7 @@ import {getRandomNumber} from "../utils/utils"
 
 let answerLetters = [], incorrectNumber, currentData, usedLetters;
 let gallowsElem;
+let isGameOver = false;
 
 async function getAnswerArray() {
 
@@ -83,6 +84,7 @@ function checkLetters(answer, letter) {
                 className: 'button_more'
             }
         });
+        isGameOver = true
 
     } else if(!answerLetters.includes(' ')) {
         openPopup({
@@ -93,6 +95,7 @@ function checkLetters(answer, letter) {
             }
         });
         answerLetters = [];
+        isGameOver = true
     }
 
 }
@@ -121,4 +124,4 @@ function changeAttempts() {
     quizCont.querySelector('span').textContent = `Неправильных попыток: ${incorrectNumber}/6`;
 }
 
-export { keyboardListener, updateWord, typingListener, getAnswerArray }
+export { keyboardListener, updateWord, typingListener, getAnswerArray, isGameOver }
