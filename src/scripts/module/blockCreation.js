@@ -1,8 +1,8 @@
-import {alphabet} from "../utils/constants";
-import {render} from "../utils/utils"
-import gallowsImg from './../../assets/images/gallows.png';
+import { alphabet } from "../utils/constants";
+import { render } from "../utils/utils";
+import gallowsImg from "../../assets/images/gallows.png";
 
-const body = document.querySelector('body');
+const body = document.querySelector("body");
 const cont = getContElem();
 const quizCont = getQuizCont();
 const popupBtn = getPopupBtn();
@@ -11,81 +11,90 @@ const overlay = getOverlay();
 const keyboard = getKeyboard();
 
 function getContElem() {
-    const cont = document.createElement('div');
-    cont.classList.add('cont');
+  const contElem = document.createElement("div");
+  contElem.classList.add("cont");
 
-    return cont;
+  return contElem;
 }
 
 function getGallows() {
-    const gallows = document.createElement('div');
-    gallows.classList.add('gallows');
+  const gallowsElem = document.createElement("div");
+  gallowsElem.classList.add("gallows");
 
-    const gallowsImgEl = document.createElement('img');
-    gallowsImgEl.classList.add('gallows__img');
-    gallowsImgEl.src = gallowsImg;
-    gallows.prepend(gallowsImgEl);
+  const gallowsImgEl = document.createElement("img");
+  gallowsImgEl.classList.add("gallows__img");
+  gallowsImgEl.src = gallowsImg;
+  gallowsElem.prepend(gallowsImgEl);
 
-    return gallows;
+  return gallowsElem;
 }
 
 function getQuizCont() {
-    const cont = document.createElement('div');
-    cont.classList.add('quiz');
+  const quizContElem = document.createElement("div");
+  quizContElem.classList.add("quiz");
 
-    return cont;
+  return quizContElem;
 }
 
 function getPopupBtn() {
-    const button = document.createElement('button');
-    button.classList.add('button');
+  const button = document.createElement("button");
+  button.classList.add("button");
 
-    return button;
+  return button;
 }
 
 function getPopup() {
-    const popup = document.createElement('div');
-    popup.classList.add('popup');
+  const popupElem = document.createElement("div");
+  popupElem.classList.add("popup");
 
-    const popupContent = document.createElement('div');
-    popupContent.classList.add('popup__content');
-    popup.prepend(popupContent);
+  const popupContent = document.createElement("div");
+  popupContent.classList.add("popup__content");
+  popupElem.prepend(popupContent);
 
-    const textCont = document.createElement('div');
-    textCont.classList.add('text__cont');
-    popupContent.append(textCont);
+  const textCont = document.createElement("div");
+  textCont.classList.add("text__cont");
+  popupContent.append(textCont);
 
-    popupContent.append(popupBtn)
+  popupContent.append(popupBtn);
 
-    return popup;
+  return popupElem;
 }
 
 function getOverlay() {
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
+  const overlayElem = document.createElement("div");
+  overlayElem.classList.add("overlay");
 
-    return overlay;
+  return overlayElem;
 }
 
 function getKeyboard() {
-    const keyboard = document.createElement('div');
-    keyboard.classList.add('keyboard');
+  const keyboardElem = document.createElement("div");
+  keyboardElem.classList.add("keyboard");
 
-    for (let i = 0; i < alphabet.length; i++) {
-        const letterCont = document.createElement('button');
-        letterCont.textContent = alphabet[i];
-        keyboard.append(letterCont);
-    }
+  for (let i = 0; i < alphabet.length; i += 1) {
+    const letterCont = document.createElement("button");
+    letterCont.textContent = alphabet[i];
+    keyboardElem.append(letterCont);
+  }
 
-    return keyboard;
+  return keyboardElem;
 }
 
 function renderStatic() {
-    render(cont, body)
-    render(quizCont)
-    quizCont.prepend(keyboard);
-    render(popup, body)
-    render(overlay, body)
+  render(cont, body);
+  render(quizCont);
+  quizCont.prepend(keyboard);
+  render(popup, body);
+  render(overlay, body);
 }
 
-export { cont, quizCont, keyboard, popup, popupBtn, overlay, getGallows, renderStatic }
+export {
+  cont,
+  quizCont,
+  keyboard,
+  popup,
+  popupBtn,
+  overlay,
+  getGallows,
+  renderStatic,
+};
