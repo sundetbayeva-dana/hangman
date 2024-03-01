@@ -10,6 +10,7 @@ import {
   keyboard,
   popup,
   popupBtn,
+  overlay,
   getGallows,
   renderStatic,
 } from "./module/blockCreation";
@@ -34,6 +35,10 @@ getAnswerArray().then((data) => {
 
 popupBtn.addEventListener("click", (e) => {
   if (e.target.classList.contains("button_more")) setNewGame();
+  closePopup();
+});
+
+overlay.addEventListener("click", () => {
   closePopup();
 });
 
