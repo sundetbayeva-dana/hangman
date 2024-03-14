@@ -10,11 +10,10 @@ let usedLetters;
 let gallowsElem;
 
 async function getAnswerArray() {
-  let rand = getRandomNumber(questions);
-
-  while (rand === +localStorage.getItem("ds-qs_id")) {
+  let rand;
+  do {
     rand = getRandomNumber(questions);
-  }
+  } while (rand === +localStorage.getItem("ds-qs_id"));
 
   localStorage.setItem("ds-qs_id", `${rand}`);
   return questions.filter((i) => i.id === rand)[0];
@@ -28,14 +27,17 @@ function updateWord(data, gallows) {
   currentData = data;
   usedLetters = "";
   gallowsElem = gallows;
+  keyboard.querySelectorAll("button").forEach((key) => {
+    key.disabled = false;
+    key.classList.remove("correct", "incorrect");
+  });
 }
 
 function keyboardListener(e) {
   if (e.target.tagName !== "BUTTON") return;
 
   e.target.disabled = true;
-
-  checkLetters(currentData.answer, e.target.textContent);
+  checkLetters(currentData.answer, e.target.textContent, e.target);
 }
 
 function typingListener(e) {
@@ -61,14 +63,27 @@ function typingListener(e) {
   }
 }
 
-function checkLetters(answer, letter) {
+function checkLetters(answer, letterValue) {
+  const letter = letterValue.toLowerCase();
   if (answer.includes(letter)) {
     for (let i = 0; i < answer.length; i += 1) {
       if (answer[i] === letter) answerLetters[i] = letter;
+      // letterElem.classList.add("correct");
     }
+    keyboard.querySelectorAll("button").forEach((key) => {
+      if (key.textContent === letter.toUpperCase()) {
+        key.classList.add("correct");
+      }
+    });
     renderLetter();
   } else {
+    keyboard.querySelectorAll("button").forEach((key) => {
+      if (key.textContent === letter.toUpperCase()) {
+        key.classList.add("incorrect");
+      }
+    });
     incorrectNumber += 1;
+    // letterElem.classList.add("incorrect");
     renderManPart();
     changeAttempts();
   }
@@ -98,7 +113,7 @@ function renderLetter() {
   const letterElems = document.querySelectorAll(".letter");
 
   letterElems.forEach((letter, index) => {
-    letter.textContent = answerLetters[index];
+    letter.textContent = answerLetters[index].toUpperCase();
     if (letter.textContent !== " ") letter.style.borderBottom = "none";
   });
 }
@@ -114,8 +129,7 @@ function renderManPart() {
 }
 
 function changeAttempts() {
-  quizCont.querySelector("span").textContent =
-    `Неправильных попыток: ${incorrectNumber}/6`;
+  quizCont.querySelector(".attempt span").textContent = `${incorrectNumber}/6`;
 }
 
 export { keyboardListener, updateWord, typingListener, getAnswerArray };

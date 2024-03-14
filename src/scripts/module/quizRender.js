@@ -10,9 +10,8 @@ function getWordTemplate(word) {
   wordCont.classList.add("word");
 
   for (let i = 0; i < word.length; i += 1) {
-    const letter = document.createElement("div");
+    const letter = document.createElement("span");
     letter.classList.add("letter");
-    letter.style.borderBottom = "1px solid teal";
     wordCont.append(letter);
   }
   return wordCont;
@@ -21,15 +20,23 @@ function getWordTemplate(word) {
 function getHint(text) {
   const hintElem = document.createElement("p");
   hintElem.textContent = text;
+  hintElem.classList.add("question");
 
   return hintElem;
 }
 
 function getAttempt() {
-  const attempt = document.createElement("span");
-  attempt.textContent = "Неправильных попыток: 0/6";
+  const attemptCont = document.createElement("div");
+  attemptCont.classList.add("attempt");
+  const attempt = document.createElement("p");
+  attempt.textContent = "Неправильных попыток:";
+  attemptCont.append(attempt);
 
-  return attempt;
+  const attemptCount = document.createElement("span");
+  attemptCount.textContent = "0/6";
+  attemptCont.append(attemptCount);
+
+  return attemptCont;
 }
 
 function render(element, container = document.querySelector(".cont")) {
@@ -51,4 +58,12 @@ function removeQuiz() {
   attempts.remove();
 }
 
-export { renderQuiz, removeQuiz };
+function getRestartBtn() {
+  const btn = document.createElement("button");
+  btn.classList.add("button", "button_more");
+  btn.textContent = "Играть еще";
+
+  return btn;
+}
+
+export { renderQuiz, removeQuiz, getRestartBtn };

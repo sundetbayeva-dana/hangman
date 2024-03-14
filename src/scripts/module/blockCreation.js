@@ -73,7 +73,8 @@ function getKeyboard() {
 
   for (let i = 0; i < alphabet.length; i += 1) {
     const letterCont = document.createElement("button");
-    letterCont.textContent = alphabet[i];
+    letterCont.textContent = alphabet[i].toUpperCase();
+    letterCont.classList.add("keyboard__btn");
     keyboardElem.append(letterCont);
   }
 

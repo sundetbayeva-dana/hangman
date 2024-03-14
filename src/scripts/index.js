@@ -14,10 +14,11 @@ import {
   getGallows,
   renderStatic,
 } from "./module/blockCreation";
-import { renderQuiz, removeQuiz } from "./module/quizRender";
+import { renderQuiz, removeQuiz, getRestartBtn } from "./module/quizRender";
 import "../style/style.css";
 
 let gallows = getGallows();
+let restartBtn;
 
 renderStatic();
 cont.prepend(gallows);
@@ -40,6 +41,9 @@ popupBtn.addEventListener("click", (e) => {
 
 overlay.addEventListener("click", () => {
   closePopup();
+  restartBtn = getRestartBtn();
+  gallows.after(restartBtn);
+  document.querySelector(".button_more")?.addEventListener("click", setNewGame);
 });
 
 document.addEventListener("keydown", (e) => {
@@ -54,10 +58,7 @@ function setNewGame() {
   gallows = getGallows();
   cont.prepend(gallows);
   removeQuiz();
-
-  keyboard.querySelectorAll("button").forEach((key) => {
-    key.disabled = false;
-  });
+  restartBtn.remove();
 
   getAnswerArray().then((data) => {
     // eslint-disable-next-line no-console
